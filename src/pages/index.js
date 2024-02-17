@@ -1,107 +1,83 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import * as React from "react";
 
-import Layout from '../components/layout'
+import { StaticImage } from "gatsby-plugin-image";
+import { MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
 
-class HomeIndex extends React.Component {
-  render() {
-    return (
-      <Layout>
-        <div id="main">
-          <section id="storia">
-            <header className="major">
-              <h2>Chi siamo</h2>
-            </header>
-            <p>
-              La <strong>Villa Giuseppe & Figli S.r.l.</strong> è un'impresa
-              edile che opera dal 1957 nell'ambito della{' '}
-              <strong>costruzione</strong>, <strong>ristrutturazione</strong>,
-              <strong>manutenzione</strong> e{' '}
-              <strong>risanamento conservativo</strong> di tutti i tipi di
-              edifici, sia residenziali che non residenziali.
-            </p>
-            <ul className="actions">
-              <li>
-                <Link to="/storia#main" className="button">
-                  La nostra storia
-                </Link>
-              </li>
-            </ul>
-          </section>
+import logo from "../images/logo.png";
+import background from "../images/bg.png";
 
-          <section id="cosafacciamo">
-            <h2>Cosa facciamo</h2>
-            <ul>
-              <li>
-                Compravendita di terreni e fabbricati, esercizio dell'attività
-                di impresa edilizia di costruzione, trasformazione e
-                manutenzione di fabbricati di qualsiasi specie ed uso.
-              </li>
-              <li>
-                Esecuzione di opere stradali, escavazione e livellamento di
-                terreni, o simili, sia su suolo per conto proprio sia su suolo
-                per conto altrui.
-              </li>
-              <li>
-                Produzione di manufatti in cemento e calcestruzzo con l’inerente
-                commercio di detti materiali e prodotti.
-              </li>
-              <li>
-                Costruzione di edifici civili, industriali, monumentali completi
-                di impianti e di opere connesse ed accessorie.
-              </li>
-              <li>
-                Opere murarie relative ai complessi per la produzione e
-                distribuzione di energia, lavori di terra con eventuali opere
-                connesse in muratura e cemento armato di tipo corrente.
-              </li>
-              <li>
-                Demolizioni, sterri, costruzioni stradali, pavimentazioni
-                stradali, rilevati aeroportuali e ferroviari, lavori idraulici,
-                acquedotti, fognature e impianti di irrigazione.
-              </li>
-              <li>Commercio al minuto di materiali edili.</li>
-            </ul>
-          </section>
-          <section id="contattaci">
-            <h2>Contattaci</h2>
-            <ul className="labeled-icons">
-              <li>
-                <h3 className="icon fa-phone">
-                  <span className="label">Telefono</span>
-                </h3>
-                <a href="tel:+39035991215">035 991215</a>
-              </li>
-              <li>
-                <h3 className="icon fa-envelope-o">
-                  <span className="label">E-mail</span>
-                </h3>
-                <a href="mailto:info@vgefsrl.it">info@vgefsrl.it</a>
-              </li>
-            </ul>
-          </section>
-          <section id="dovesiamo">
-            <h2>Dove siamo</h2>
-            <p>
-              La <strong>Villa Giuseppe & Figli S.r.l.</strong> è a Bonate Sotto
-              (BG) in Via Primo Maggio, 26 ed è facilmente raggiungibile sia
-              dall'A4 (casello Dalmine) che da Bergamo e Lecco (via SP ex SS 342
-              A.I.).
-            </p>
-            <iframe
-              title="Mappa"
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d44610.09800315954!2d9.579093153512082!3d45.66826790009461!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb7e8ae7364e79e58!2sVilla+Giuseppe+%26+Figli+S.r.l.!5e0!3m2!1sit!2sit!4v1547118191111"
-              width="100%"
-              height="450"
-              frameborder="0"
-              style={{ border: 0 }}
-              allowfullscreen
-            />
-          </section>
+const pageStyles = {
+  backgroundImage: "url(" + background + ")",
+};
+
+const IndexPage = () => {
+  return (
+    <main
+      class="grid lg:grid-cols-2 place-items-center px-16 pt-16 pb-8 md:pt-8 gap-12 h-screen bg-no-repeat bg-cover"
+      style={pageStyles}
+    >
+      <div>
+        <img
+          src={logo}
+          alt="Logo microimpresa Villa Giuseppe e Figli S.r.l."
+          class="pb-6"
+        />
+        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight">
+          Villa Giuseppe & Figli S.r.l.
+        </h1>
+        <p class="text-lg mt-4 text-slate-600 max-w-xl">
+          Microimpresa edile
+          <br />
+          Costruzioni, ristrutturazioni, manutenzioni e risanamenti conservativi
+        </p>
+      </div>
+      <div class="py-6 hidden md:block">
+        <StaticImage
+          class="rounded-lg shadow-xl shadow-gray-500"
+          src="../images/hero.jpg"
+          alt="Sede della microimpresa Villa Giuseppe & Figli S.r.l."
+        />
+      </div>
+      <div class="p-4">
+        <div class="flex items-center space-x-2 text-gray-800">
+          <MapPinIcon class="w-8 h-8" />
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Villa%20Giuseppe%20%26%20Figli%20S.r.l.&query_place_id=ChIJc4pwExxTgUcRWJ7nZHOu6Lc"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Via Primo Maggio, 26
+            <br />
+            24040 Bonate Sotto (BG)
+          </a>
         </div>
-      </Layout>
-    )
-  }
-}
+      </div>
+      <div class="p-4">
+        <div class="flex items-center space-x-2 text-gray-800">
+          <EnvelopeIcon class="w-8 h-8" />
+          <a href="mailto:info@vgefsrl.it">info@vgefsrl.it</a>
+        </div>
+      </div>
+      <div class="lg:col-span-2 flex flex-wrap justify-around gap-6 text-gray-600 py-6">
+        <div>Impresa Edile</div>
+        <div>Iscr. Reg. Imprese di Bergamo</div>
+        <div>C.F. e P. IVA: 00077760163</div>
+        <div>Sede: Bonate Sotto (BG)</div>
+        <div>Cap. Soc.: 98.800,00€ i.v.</div>
+      </div>
+    </main>
+  );
+};
 
-export default HomeIndex
+export default IndexPage;
+
+export const Head = () => (
+  <>
+    <html lang="it" />
+    <title>Villa Giuseppe & Figli S.r.l.</title>
+    <meta
+      name="description"
+      content="Costruzioni, ristrutturazioni, manutenzioni e risanamenti conservativi"
+    />
+  </>
+);

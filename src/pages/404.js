@@ -1,55 +1,41 @@
-import * as React from "react";
-import { Link } from "gatsby";
+import Image from "next/image";
+import Link from "next/link";
+import { Roboto } from 'next/font/google'
 
-import logo from "../images/logo.png";
-import background from "../images/bg.png";
+import logo from "./images/logo.png";
 
-const pageStyles = {
-  backgroundImage: "url(" + background + ")",
-};
+const roboto = Roboto({
+  subsets: ['latin'],
+})
 
-const NotFoundPage = () => {
+export default () => {
   return (
     <main
-      class="place-items-center px-16 pt-16 pb-8 md:pt-8 gap-12 h-screen bg-no-repeat bg-cover"
-      style={pageStyles}
+      className={`place-items-center px-16 pt-16 pb-8 md:pt-8 gap-12 h-screen bg-no-repeat bg-cover bg-[url('/bg.png')] ${roboto.className}`}
     >
-      <img
+      <Image
         src={logo}
         alt="Logo microimpresa Villa Giuseppe e Figli S.r.l."
-        class="pb-6"
+        className="pb-6"
       />
-      <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight">
+      <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight">
         Villa Giuseppe & Figli S.r.l.
       </h1>
-      <p class="text-lg mt-4 text-slate-600 max-w-xl">
+      <p className="text-lg mt-4 text-slate-600 max-w-xl">
         Microimpresa edile
         <br />
         Costruzioni, ristrutturazioni, manutenzioni e risanamenti conservativi
       </p>
-      <p class="text-4xl font-bold lg:tracking-tight my-8 text-center">
+      <p className="text-4xl font-bold lg:tracking-tight my-8 text-center">
         Pagina non trovata
       </p>
-      <p class="text-lg mt-4 text-slate-600">
+      <p className="text-lg mt-4 text-slate-600">
         Ci dispiace, abbiamo guardato dappertutto ma non siamo riusciti a
         trovare la pagina richiesta.
       </p>
-      <p class="text-lg mt-4 text-slate-600">
-        <Link to="/">Torna alla pagina principale</Link>
+      <p className="text-2xl font-bold lg:tracking-tight my-24 text-center">
+        <Link href="/">Torna alla pagina principale</Link>
       </p>
     </main>
   );
 };
-
-export default NotFoundPage;
-
-export const Head = () => (
-  <>
-    <html lang="it" />
-    <title>Pagina non trovata - Villa Giuseppe & Figli S.r.l.</title>
-    <meta
-      name="description"
-      content="Costruzioni, ristrutturazioni, manutenzioni e risanamenti conservativi"
-    />
-  </>
-);

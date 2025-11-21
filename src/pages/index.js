@@ -1,46 +1,44 @@
-import * as React from "react";
-
-import { StaticImage } from "gatsby-plugin-image";
+import Image from "next/image";
 import { MapPinIcon, EnvelopeIcon } from "@heroicons/react/24/solid";
+import { Roboto } from 'next/font/google'
 
-import logo from "../images/logo.png";
-import background from "../images/bg.png";
+import logo from "./images/logo.png";
+import hero from "./images/hero.jpg";
 
-const pageStyles = {
-  backgroundImage: "url(" + background + ")",
-};
+const roboto = Roboto({
+  subsets: ['latin'],
+})
 
-const IndexPage = () => {
+export default () => {
   return (
     <main
-      class="grid lg:grid-cols-2 place-items-center px-16 pt-16 pb-8 md:pt-8 gap-12 h-screen bg-no-repeat bg-cover"
-      style={pageStyles}
+      className={`grid lg:grid-cols-2 place-items-center px-16 pt-16 pb-8 md:pt-8 gap-12 h-screen bg-no-repeat bg-cover bg-[url('/bg.png')] ${roboto.className}`}
     >
       <div>
-        <img
+        <Image
           src={logo}
           alt="Logo microimpresa Villa Giuseppe e Figli S.r.l."
-          class="pb-6"
+          className="pb-6"
         />
-        <h1 class="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight">
+        <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold lg:tracking-tight">
           Villa Giuseppe & Figli S.r.l.
         </h1>
-        <p class="text-lg mt-4 text-slate-600 max-w-xl">
+        <p className="text-lg mt-4 text-slate-600 max-w-xl">
           Microimpresa edile
           <br />
           Costruzioni, ristrutturazioni, manutenzioni e risanamenti conservativi
         </p>
       </div>
-      <div class="py-6 hidden md:block">
-        <StaticImage
-          class="rounded-lg shadow-xl shadow-gray-500"
-          src="../images/hero.jpg"
+      <div className="py-6 hidden md:block">
+        <Image
+          className="rounded-lg shadow-xl shadow-gray-500"
+          src={hero}
           alt="Sede della microimpresa Villa Giuseppe & Figli S.r.l."
         />
       </div>
-      <div class="p-4">
-        <div class="flex items-center space-x-2 text-gray-800">
-          <MapPinIcon class="w-8 h-8" />
+      <div className="p-4">
+        <div className="flex items-center space-x-2 text-gray-800">
+          <MapPinIcon className="w-8 h-8" />
           <a
             href="https://www.google.com/maps/search/?api=1&query=Villa%20Giuseppe%20%26%20Figli%20S.r.l.&query_place_id=ChIJc4pwExxTgUcRWJ7nZHOu6Lc"
             target="_blank"
@@ -52,13 +50,13 @@ const IndexPage = () => {
           </a>
         </div>
       </div>
-      <div class="p-4">
-        <div class="flex items-center space-x-2 text-gray-800">
-          <EnvelopeIcon class="w-8 h-8" />
+      <div className="p-4">
+        <div className="flex items-center space-x-2 text-gray-800">
+          <EnvelopeIcon className="w-8 h-8" />
           <a href="mailto:info@vgefsrl.it">info@vgefsrl.it</a>
         </div>
       </div>
-      <div class="lg:col-span-2 flex flex-wrap justify-around gap-6 text-gray-600 py-6">
+      <div className="lg:col-span-2 flex flex-wrap justify-around gap-6 text-gray-600 py-6">
         <div>Impresa Edile</div>
         <div>Iscr. Reg. Imprese di Bergamo</div>
         <div>C.F. e P. IVA: 00077760163</div>
@@ -68,16 +66,3 @@ const IndexPage = () => {
     </main>
   );
 };
-
-export default IndexPage;
-
-export const Head = () => (
-  <>
-    <html lang="it" />
-    <title>Villa Giuseppe & Figli S.r.l.</title>
-    <meta
-      name="description"
-      content="Costruzioni, ristrutturazioni, manutenzioni e risanamenti conservativi"
-    />
-  </>
-);
